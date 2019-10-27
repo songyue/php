@@ -20,7 +20,7 @@ class Node
 class MyLinkedList
 {
     private $head;
-    private $last; // 
+    private $last;
     private $size;
 
     public function __construct()
@@ -31,8 +31,8 @@ class MyLinkedList
     }
     /**
      * 链表插入元素
-     * @param data  插入元素
-     * @param index 插入位置 
+     * @parma $data  插入元素
+     * @parma $index 插入位置 
      */
     public function insert($data, $index) {
         if($index < 0 || $index > $this->size){
@@ -62,10 +62,9 @@ class MyLinkedList
 
     /**
      * 链表删除元素
-     * @param index 删除的位置
+     * @parma $index 删除的位置
      */
     public function remove($index) {
-        
         if($index < 0 || $index > $this->size){
             throw new Exception("超出链表节点范围！");
         }
@@ -91,10 +90,9 @@ class MyLinkedList
 
     /**
      * 链表查找元素
-     * @param index 查找的位置
+     * @parma $index 查找的位置
      */
     public function get($index) {
-        
         if($index < 0 || $index > $this->size){
             throw new Exception("超出链表节点范围！");
         }
