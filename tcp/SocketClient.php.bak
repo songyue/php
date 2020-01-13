@@ -1,0 +1,63 @@
+<?php
+/**
+ * File Name: SocketClient.php
+ * Author: songyue
+ * mail: songyue118@gmail.com
+ * Created Time: 五 12/20 15:40:36 2019
+ */
+set_time_limit(0);   
+     
+$host = "192.168.20.218";   
+$port = 8881;   
+
+while(1){
+    echo("connecting to ");
+    echo($host);
+    echo(':');
+    echo($port);
+    echo(PHP_EOL);
+
+    // 建立TCP连接,失败等待5秒后重试
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);   
+    if(!@socket_connect($socket, $host, $port)){
+        echo("连接失败，将在3秒后重试 \n");
+        sleep(3);
+        continue;
+    }
+
+    // 向服务器发送一个字符串,如果连接不可用，关闭连接，等待3秒后重启应用
+    if(!_socket_write($socket, "hello socket")){
+        echo("发送内容失败\n"); 
+        continue;
+    }
+
+    // 接受服务器返回的字符串
+    while ($buff = @socket_read($socket, 1024, PHP_NORMAL_READ)) {   
+        echo("Response was:" . $buff . "\n"); 
+        echo("input what you want to say to the server:\n"); 
+        //$text = fgets(STDIN); 
+        $text = 'hello ';
+        if(!_socket_write($socket, $text)){
+     //       continue;
+        } 
+        sleep(1);
+    }   
+    //socket_close($socket);
+    sleep(3);
+
+}
+
+function _socket_write( $socket , string $buffer , int $length = 0  )
+{
+    //todo 判断socker 是否为 resource 实例
+    
+    //
+    if(!@socket_write($socket, $text)){
+       // echo(">>> Client Timeout !");
+       // @socket_close($socket);
+       // sleep(3);
+        return false;
+    }
+    return true;
+}
+?> 
