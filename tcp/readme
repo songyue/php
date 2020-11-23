@@ -1,0 +1,18 @@
+1、修改php.ini，打开extension=php_sockets.dll
+2、服务端程序SocketServer.php
+3、客户端程序SocketClient.php
+4、测试
+
+      运行服务端程序：php SocketServer.php
+
+     运行客户端程序： php SocketClient.php
+
+5、其流程与C很相似，实际上就是封装了C的socket。
+ 
+
+
+http服务(app端访问）
+php -S 0.0.0.0.0:8881
+http://0.0.0.0:8881/server.php?c=yaobuqi&a=getStatus&status=1
+nodemcu
+https://github.com/nodemcu/nodemcu-firmware/wiki/nodemcu_api_cn#new_gpio_map
