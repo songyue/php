@@ -105,6 +105,23 @@ class MyLinkedList
     }
 
     /**
+     * 链表反转
+     */
+    public function reverse() {
+            $p = $this->head->next; 
+            $q = NULL;  
+            $this->head->next = NULL; 
+            while($p){   
+                print_r($p);
+                $pr = $p->next;    
+                $p->next = $q;    
+                $q = $p;   
+                $p = $pr;  
+            }  
+            $this->head->next = $q;  
+    }
+
+    /**
      * 输出链表
      */
     public function output() {
@@ -125,6 +142,9 @@ $myLinkedList->insert(5,3);
 $myLinkedList->insert(6,1);
 $myLinkedList->output();
 $myLinkedList->remove(2);
-echo ("删除index：2后的数组\n");
+echo ("删除index：2后的链表\n");
+$myLinkedList->output();
+$myLinkedList->reverse();
+echo ("反转后的链表\n");
 $myLinkedList->output();
 
