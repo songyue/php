@@ -1,0 +1,10 @@
+phpunit
+
+安装
+composer require phpunit/phpunit
+
+使用
+创建配置文件
+phpunit --generate-configuration
+
+
